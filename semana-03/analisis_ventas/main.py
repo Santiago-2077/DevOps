@@ -1,5 +1,7 @@
 
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
 # 1. Crear el conjunto de datos de ventas de coches
 datos = {
@@ -35,3 +37,27 @@ print(df_ventas.head())
 
 print("\n--- Estadísticas Finales por Vendedor ---")
 print(stats_vendedores)
+
+# 6. Graficar ingresos y comisiones por vendedor
+vendedores = stats_vendedores['Vendedor'].values
+ingresos = stats_vendedores['Total_Ingresos'].values
+comisiones = stats_vendedores['Total_Comisiones'].values
+
+x = np.arange(len(vendedores))
+ancho = 0.35
+
+fig, ax = plt.subplots(figsize=(8, 5))
+barras_ingresos = ax.bar(x - ancho / 2, ingresos, ancho, label='Total Ingresos')
+barras_comisiones = ax.bar(x + ancho / 2, comisiones, ancho, label='Total Comisiones')
+
+ax.set_title('Ingresos y Comisiones por Vendedor')
+ax.set_xlabel('Vendedor')
+ax.set_ylabel('Monto ($)')
+ax.set_xticks(x)
+ax.set_xticklabels(vendedores)
+ax.legend()
+ax.bar_label(barras_ingresos, fmt='$%.0f', padding=3)
+ax.bar_label(barras_comisiones, fmt='$%.0f', padding=3)
+
+plt.tight_layout()
+plt.show()
