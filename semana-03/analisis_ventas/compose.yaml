@@ -1,0 +1,6 @@
+services:
+  semana03:
+    image: semana03
+    build:
+      context: .
+      dockerfile: ./Dockerfile

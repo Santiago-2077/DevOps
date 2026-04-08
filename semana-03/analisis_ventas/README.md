@@ -1,0 +1,7 @@
+# Semana 03 - Análisis de Ventas con Pandas
+
+Este proyecto contiene un script de Python que analiza un conjunto de datos de ventas de coches utilizando la librería `pandas`. El script crea un DataFrame con información de tres vendedores (Elena, Marco y Sofía), registrando el modelo de coche vendido, el precio de venta y la comisión pactada por cada transacción. A partir de estos datos, calcula automáticamente el monto de comisión en dinero para cada venta multiplicando el precio por el porcentaje acordado.
+
+Una vez calculadas las comisiones individuales, el script agrupa los datos por vendedor usando `.groupby()` y `.agg()` para obtener estadísticas consolidadas: número de coches vendidos, total de ingresos generados, promedio por venta y total de comisiones ganadas. Además, se calcula el "Ticket Promedio" dividiendo los ingresos totales entre el número de ventas, y los resultados se ordenan de mayor a menor ingreso para identificar fácilmente al vendedor con mejor desempeño.
+
+La imagen de Docker está basada en `python:3-slim` para mantener un tamaño reducido. Durante la construcción, instala las dependencias definidas en `requirements.txt` (únicamente `pandas`), copia el código al directorio `/app` y crea un usuario sin privilegios de root (`appuser`) por razones de seguridad. Al ejecutar el contenedor, corre automáticamente `python main.py`, imprimiendo en consola tanto el listado de ventas individuales como el resumen estadístico final por vendedor.
